@@ -1,13 +1,11 @@
 const express = require("express");
 const app = express();
+var calculator = require("./src/Calculator");
 
-app.use(express.json());
-
-app.get("/", (req, res) => {
-  res.json({ API: "ok" });
+app.get("/", function (req, res) {
+  res.send(`Hello World! A soma de 2 + 2 é: ${calculator.sum(2, 2)}`);
 });
 
-const PORT = process.env.PORT || 8089;
-app.listen(PORT, () => {
-  console.log(`API RODANDO NA PORTA ${PORT}`);
+app.listen(5000, function () {
+  console.log("🚀 Servidor rodando na porta 5000");
 });
